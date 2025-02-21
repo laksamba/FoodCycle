@@ -13,7 +13,8 @@ const UserSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["business", "consumer", "ngos"], // Corrected Enum
+      enum: ["business", "consumer", "ngos" , "admin"], 
+      default: "consumer",
       required: true,
     },
     location: {
@@ -22,6 +23,7 @@ const UserSchema = new mongoose.Schema(
         lng: { type: Number, required: true },
       },
       required: true,
+      index: '2dsphere',
     },
     phone: {
       type: Number,

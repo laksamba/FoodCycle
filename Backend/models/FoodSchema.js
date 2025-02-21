@@ -21,6 +21,7 @@ const FoodSchema = new mongoose.Schema(
     expireTime: {
       type: Date,
       required: true,
+      index: true,
     },
     discount: {
       type: Number,
