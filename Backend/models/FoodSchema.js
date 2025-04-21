@@ -47,9 +47,24 @@ const FoodSchema = new mongoose.Schema(
       type: [String],
       default: [],
     },
+    // Add the location field for geospatial queries
+    location: {
+      type: {
+        type: String,
+        enum: ['Point'],  // Ensure this is 'Point' for GeoJSON format
+        required: true,
+      },
+      coordinates: {
+        type: [Number], // Array of [longitude, latitude]
+        required: true,
+      },
+    },
   },
   { timestamps: true }
 );
+
+// Create a 2dsphere index for geospatial queries
+FoodSchema.index({ location: '2dsphere' });
 
 const Food = mongoose.model("Food", FoodSchema);
 

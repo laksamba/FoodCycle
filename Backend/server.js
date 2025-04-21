@@ -1,15 +1,19 @@
 import express from 'express'
 import connectDB from './config/db.js';
+import authRoutes from './routes/authRoutes.js';
+import foodRoutes from './routes/foodRoutes.js';
 
 
 const app = express();
+app.use(express.json());
 connectDB();
+
+//routes 
+app.use('/api/auth',authRoutes);
+app.use('/api/food',foodRoutes);
 
 const PORT = process.env.PORT || 5000
 
-app.get('/', (req, res) => {
-    res.send("FoodCycle Nepal platform");
-})
 
 app.listen(PORT,()=>{
     console.log(`server is running on port ${PORT}`);
