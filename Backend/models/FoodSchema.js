@@ -52,11 +52,11 @@ const FoodSchema = new mongoose.Schema(
       type: {
         type: String,
         enum: ['Point'],  // Ensure this is 'Point' for GeoJSON format
-        required: true,
+        required: false,
       },
       coordinates: {
         type: [Number], // Array of [longitude, latitude]
-        required: true,
+        required: false,
       },
     },
   },
