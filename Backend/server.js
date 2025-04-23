@@ -3,6 +3,7 @@ import connectDB from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import foodRoutes from './routes/foodRoutes.js';
 import orderRoutes from './routes/orderRoutes.js'
+import adminRoutes from './routes/adminRoutes.js'; 
 
 
 const app = express();
@@ -13,6 +14,7 @@ connectDB();
 app.use('/api/auth',authRoutes);
 app.use('/api/food',foodRoutes);
 app.use('/api/order',orderRoutes)
+app.use('/api/admin',adminRoutes)
 
 const PORT = process.env.PORT || 5000
 
